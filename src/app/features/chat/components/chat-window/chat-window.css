@@ -1,0 +1,7 @@
+.chat-container {
+  padding: 16px;
+  height: calc(100vh - 128px);
+  overflow-y: auto;
+}
+.user { text-align: right; margin: 8px; }
+.bot  { text-align: left;  margin: 8px; color: gray; }

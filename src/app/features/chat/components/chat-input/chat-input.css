@@ -1,0 +1,7 @@
+.input-container {
+  display: flex; padding: 8px;
+}
+.full-width {
+  flex: 1;
+  margin-right: 8px;
+}

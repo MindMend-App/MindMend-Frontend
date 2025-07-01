@@ -1,0 +1,7 @@
+<mat-toolbar color="primary">MindMend Chat</mat-toolbar>
+<div class="chat-container">
+  <div *ngFor="let m of messages" [ngClass]="m.fromUser ? 'user' : 'bot'">
+    {{ m.text }}
+  </div>
+</div>
+<app-chat-input (send)="onUserMessage($event)"></app-chat-input>
