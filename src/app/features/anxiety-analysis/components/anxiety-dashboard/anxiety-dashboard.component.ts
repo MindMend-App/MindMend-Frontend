@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {MatToolbar} from '@angular/material/toolbar';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-anxiety-dashboard',
+  standalone: true,
   templateUrl: './anxiety-dashboard.component.html',
   imports: [
-    MatToolbar
+    CommonModule,
+    MatToolbarModule
   ],
   styleUrls: ['./anxiety-dashboard.component.css']
 })

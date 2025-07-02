@@ -7,9 +7,9 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
   imports: [
     MatProgressSpinner
   ],
-  templateUrl: './loading-spinner.html',
-  styleUrl: './loading-spinner.css'
+  templateUrl: './loading-spinner.component.html',
+  styleUrl: './loading-spinner.component.css'
 })
-export class LoadingSpinner {
+export class LoadingSpinnerComponent {
 
 }

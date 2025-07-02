@@ -4,7 +4,6 @@ import { AnxietyAnalysisRoutingModule } from './anxiety-analysis-routing.module'
 import { AnxietyDashboardComponent } from './components/anxiety-dashboard/anxiety-dashboard.component';
 
 @NgModule({
-  declarations: [AnxietyDashboardComponent],
-  imports: [SharedModule, AnxietyAnalysisRoutingModule]
+  imports: [SharedModule, AnxietyAnalysisRoutingModule, AnxietyDashboardComponent]
 })
 export class AnxietyAnalysisModule {}
