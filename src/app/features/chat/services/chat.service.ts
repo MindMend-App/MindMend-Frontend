@@ -1,12 +1,26 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {ApiService} from '../../../core/services/api.service';
+import { map } from 'rxjs/operators';
 
-@Injectable()
+interface ChatResp    { reply: string; }
+interface AnalyzeResp { label: string; score: number; }
+
+@Injectable({ providedIn: 'root' })
 export class ChatService {
-  constructor(private api: ApiService) {}
+  // Llamamos al backend Java, no al Python directo
+  private base = 'http://localhost:8080/api';
 
-  sendMessage(text: string): Observable<{ reply: string }> {
-    return this.api.post('chat/send', { message: text });
+  constructor(private http: HttpClient) {}
+
+  chat(message: string): Observable<string> {
+    return this.http
+      .post<ChatResp>(`${this.base}/chat`, { message })
+      .pipe(map(r => r.reply));
+  }
+
+  analyze(messages: string[]): Observable<AnalyzeResp> {
+    return this.http
+      .post<AnalyzeResp>(`${this.base}/analyze`, { messages });
   }
 }

@@ -1,5 +1,24 @@
-<mat-toolbar color="warn">Análisis de Ansiedad</mat-toolbar>
-<div class="content">
-  <h2>Puntuación de ansiedad:</h2>
-  <h1>{{ score }}</h1>
+<mat-toolbar color="primary">
+  Análisis de Ansiedad
+</mat-toolbar>
+
+<div *ngIf="result; else noData" class="dashboard">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Resultado de Análisis</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Emoción:</strong> {{ result.label }}</p>
+      <p><strong>Puntaje:</strong> {{ (result.score * 100) | number:'1.0-2' }} %</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" (click)="goBack()">
+        Volver al chat
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>
+
+<ng-template #noData>
+  <p>No hay datos de análisis. <a routerLink="/">Volver al chat</a></p>
+</ng-template>
