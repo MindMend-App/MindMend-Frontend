@@ -1,16 +1,15 @@
-import { enableProdMode }         from '@angular/core';
-import { bootstrapApplication }   from '@angular/platform-browser';
-import { provideRouter }          from '@angular/router';
-import { provideAnimations }      from '@angular/platform-browser/animations';
-import { importProvidersFrom }    from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { bootstrapApplication }             from '@angular/platform-browser';
+import { provideRouter }                    from '@angular/router';
+import { provideAnimations }                from '@angular/platform-browser/animations';
+import { AppComponent }                     from './app/app.component';
+import { routes }                           from './app/app.routes';
+import { SharedModule }                     from './app/shared/shared.module';
+import { HttpClientModule }                 from '@angular/common/http';
+import { ChatService }                      from './app/features/chat/services/chat.service';
+import { AuthService }                      from './app/core/services/auth.service';
+import { environment } from './environments/environment';
 
-import { AppComponent }           from './app/app.component';
-import { routes }                 from './app/app.routes';
-
-
-import { CoreModule }             from './app/core/core.module';
-import { SharedModule }           from './app/shared/shared.module';
-import { environment }            from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
@@ -21,9 +20,11 @@ bootstrapApplication(AppComponent, {
     provideAnimations(),
     provideRouter(routes),
     importProvidersFrom(
-      CoreModule,
-      SharedModule
-    )
+      SharedModule,
+      HttpClientModule
+    ),
+    ChatService,
+    AuthService
   ]
 })
   .catch(err => console.error(err));

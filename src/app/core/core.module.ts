@@ -1,10 +1,15 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './services/api.service';
+// src/app/core/core.module.ts
+import { NgModule, SkipSelf, Optional } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   imports: [HttpClientModule],
-  providers: [ApiService]
+  providers: [
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parent: CoreModule) {

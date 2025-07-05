@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-
+import { ChatService } from '../../services/chat.service';
 import { ChatInputComponent } from '../chat-input/chat-input.component';
 import { MatButtonModule } from '@angular/material/button';
-import {ChatService} from '../../services/chat.service';
 
 @Component({
   selector: 'app-chat-window',
@@ -27,11 +26,9 @@ export class ChatWindowComponent {
   ) {}
 
   onUserMessage(text: string) {
-    // Agrega mensaje de usuario
     this.messages.push({ text, fromUser: true });
     this.history.push(text);
 
-    // Llama al backend para obtener respuesta
     this.chatService.chat(text).subscribe(reply => {
       this.messages.push({ text: reply, fromUser: false });
       this.history.push(reply);
@@ -39,7 +36,6 @@ export class ChatWindowComponent {
   }
 
   finishConversation() {
-    // Envía todo el historial para análisis
     this.chatService.analyze(this.history).subscribe(res => {
       this.router.navigate(['/dashboard'], { state: { analysis: res } });
     });

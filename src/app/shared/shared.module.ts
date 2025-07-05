@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule }  from '@angular/forms';
+import { NgModule }      from '@angular/core';
+import { CommonModule }  from '@angular/common';
+import { FormsModule }   from '@angular/forms';
 import { MaterialModule } from '../material.module';
-
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
@@ -13,10 +12,10 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     MaterialModule
   ],
   exports: [
-    CommonModule,      // para *ngFor, *ngIf, ngClass…
-    FormsModule,       // para [(ngModel)]
-    MaterialModule,    // todos los MatXxxModule
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CommonModule,
+    FormsModule,
+    MaterialModule
   ]
 })
 export class SharedModule {}

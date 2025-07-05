@@ -1,10 +1,8 @@
-<!-- src/app/features/chat/components/chat-window/chat-window.component.html -->
 <div class="chat-window">
   <div *ngFor="let m of messages" class="msg" [class.user]="m.fromUser">
     {{ m.text }}
   </div>
 
-  <!-- tu componente de input, que emite (send)="onUserMessage($event)" -->
   <app-chat-input (send)="onUserMessage($event)"></app-chat-input>
 
   <button

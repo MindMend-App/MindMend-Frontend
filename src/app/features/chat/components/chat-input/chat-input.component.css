@@ -1,7 +1,34 @@
-.input-container {
-  display: flex; padding: 8px;
+.chat-input-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
-.full-width {
-  flex: 1;
-  margin-right: 8px;
+
+.chat-input-field {
+  flex: 1 1 auto;
+}
+
+/* Hacemos la caja gris con bordes redondeados */
+.chat-input-field .mat-form-field-outline {
+  border-radius: 24px;
+}
+
+.chat-input-field .mat-form-field-outline-thick {
+  border-width: 0; /* quitamos el borde normal */
+}
+
+.chat-input-field .mat-form-field-flex {
+  background: #e0e0e0; /* gris claro */
+  border-radius: 24px;
+  padding-right: 0; /* para que el botón quede pegado */
+}
+
+/* Ajuste del input interno */
+.chat-input-field input {
+  padding: 0.8em 1em;
+}
+
+/* Botón “finish” pequeño a la derecha (opcional) */
+.finish-btn {
+  margin-left: 8px;
 }
