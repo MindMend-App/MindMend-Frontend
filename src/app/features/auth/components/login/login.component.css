@@ -1,0 +1,308 @@
+/* 1) Estructura de página */
+.login-page {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 2) Panel izquierdo azul */
+.login-welcome {
+  flex: 1;
+  background-color: #0d347e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+.login-welcome h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.login-welcome p {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  max-width: 300px;
+}
+.register-btn {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.register-btn:hover {
+  background: #fff;
+  color: #0d347e;
+}
+
+/* 3) Panel derecho con fondo gris claro y centrado */
+.login-form-container {
+  flex: 1;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* 4) Tarjeta blanca del formulario */
+.form-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+.form-card h2 {
+  text-align: center;
+  margin: 0;
+  font-size: 2rem;
+}
+.form-card p {
+  text-align: center;
+  color: #555;
+  margin: 0.5rem 0 2rem;
+}
+
+/* 5) Estilos del form e inputs */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* <--- centra los inputs */
+  gap: 1.5rem;              /* <--- separación uniforme */
+  width: 100%;
+}
+
+/* Extiende un poco el ancho máximo de los inputs */
+.form__group {
+  position: relative;
+  padding: 20px 0 0;
+  width: 100%;
+  max-width: 280px;         /* <--- antes 180px, ahora más ancho */
+}
+
+/* Espaciado extra bajo “Recuérdame” */
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;      /* <--- un poco más de margen */
+}
+
+/* Y un margen encima del botón para separarlo de “Recuérdame” */
+.login-btn {
+  margin-top: 1rem;         /* <--- espacio arriba del botón */
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.login-btn:hover {
+  background: #333;
+}
+
+
+
+
+/**/
+
+
+
+
+.form__group {
+  position: relative;
+  padding: 20px 0 0;
+  width: 100%;
+  max-width: 250px;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #6b6b6b;
+  outline: 0;
+  font-size: 17px;
+  color: #232323;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 17px;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #5288ce;
+  pointer-events: none;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #5288ce, #122861);
+  border-image-slice: 1;
+}
+
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #5288ce;
+  font-weight: 700;
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+
+
+
+/* checkbox */
+
+
+.check {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  appearance: none;
+  background-color: #bbb;
+  transition: all .3s;
+}
+
+.check::before {
+  content: '';
+  position: absolute;
+  border: solid #fff;
+  display: block;
+  width: .3em;
+  height: .6em;
+  border-width: 0 .2em .2em 0;
+  z-index: 1;
+  opacity: 0;
+  right: calc(50% - .3em);
+  top: calc(50% - .6em);
+  transform: rotate(0deg);
+  transition: all .3s;
+  transform-origin: center center;
+}
+
+.check:checked {
+  animation: a .3s ease-in forwards;
+  background-color: rgb(9, 54, 113);
+}
+
+.check:checked::before {
+  opacity: 1;
+  transform: rotate(405deg);
+}
+
+@keyframes a {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale(.8) rotateY(180deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(360deg);
+  }
+}
+
+
+/* ==== Responsive para móviles ==== */
+@media (max-width: 600px) {
+  /* 1) Stack vertical de los paneles */
+  .login-page {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  /* 2) Ajusta el panel de bienvenida */
+  .login-welcome {
+    flex: none;
+    height: auto;
+    padding: 1.5rem;
+  }
+  .login-welcome h1 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .login-welcome p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  /* 3) Ajusta el contenedor del formulario */
+  .login-form-container {
+    flex: none;
+    padding: 1rem;
+  }
+  .form-card {
+    padding: 2rem 1rem;
+    max-width: 100%;
+  }
+  .form-card h2 {
+    font-size: 1.5rem;
+  }
+  .form-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* 4) Inputs y botones más anchos */
+  .login-form {
+    gap: 1rem;
+  }
+  .form__group {
+    max-width: 100%;
+  }
+  .login-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  /* 5) Ajustes generales de texto */
+  .error span {
+    font-size: 0.8rem;
+  }
+  .remember-me {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+}

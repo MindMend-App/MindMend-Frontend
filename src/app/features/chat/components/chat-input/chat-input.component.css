@@ -1,34 +1,288 @@
 .chat-input-form {
   display: flex;
   align-items: center;
+  justify-content: center; /* centra horizontalmente la caja */
   width: 100%;
+  padding: 1rem 0;          /* separa un poco del contenido superior */
 }
 
-.chat-input-field {
-  flex: 1 1 auto;
+/* Hacemos que el form-field ocupe un 80% del ancho */
+:host ::ng-deep .mat-form-field-appearance-outline {
+  width: 80%;
 }
 
-/* Hacemos la caja gris con bordes redondeados */
-.chat-input-field .mat-form-field-outline {
+/* Estilos de la píldora gris: fondo, padding y bordes redondeados */
+:host ::ng-deep .mat-form-field-appearance-outline .mat-mdc-text-field-flex {
+  background: #6B7582;    /* gris-azulado parecido al mockup */
   border-radius: 24px;
+  padding: 0.8em 1em;     /* alto y separación interna */
+  align-items: center;    /* centra verticalmente el input y botón */
 }
 
-.chat-input-field .mat-form-field-outline-thick {
-  border-width: 0; /* quitamos el borde normal */
+/* Quitamos el borde fino que dibuja el notch */
+:host ::ng-deep
+.mat-form-field-appearance-outline
+.mdc-notched-outline__leading,
+:host ::ng-deep
+.mat-form-field-appearance-outline
+.mdc-notched-outline__notch,
+:host ::ng-deep
+.mat-form-field-appearance-outline
+.mdc-notched-outline__trailing {
+  border: none;
 }
 
-.chat-input-field .mat-form-field-flex {
-  background: #e0e0e0; /* gris claro */
-  border-radius: 24px;
-  padding-right: 0; /* para que el botón quede pegado */
+/* Input en blanco (placeholder y texto) */
+:host ::ng-deep .mat-form-field-appearance-outline .mat-mdc-text-field-infix {
+  color: #fff;
 }
 
-/* Ajuste del input interno */
-.chat-input-field input {
-  padding: 0.8em 1em;
+/* Ajuste del botón “send” para que quede dentro de la píldora */
+:host ::ng-deep .mat-form-field-appearance-outline
+.mat-mdc-text-field-flex button.mat-icon-button.mat-suffix {
+  margin: 0;       /* quita márgenes */
+  color: #fff;     /* icono blanco */
 }
 
-/* Botón “finish” pequeño a la derecha (opcional) */
+/* Botón “finish” sigue a la derecha */
 .finish-btn {
-  margin-left: 8px;
+  margin-left: 1rem;
+}
+
+
+/**/
+
+/* From Uiverse.io by 0xnihilism */
+/* Fancy-ass Input Styling 10.0 - The Emoji Extravaganza */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3px;
+  border-radius: 1.7rem;
+  overflow: hidden;
+}
+
+/* 2) Hacemos que el input ocupe todo lo que falte */
+.input-wrapper input {
+  position: relative;
+  flex: 1;
+  /* tus estilos previos */
+  background-color: #f5f5f5;
+  border: 2px solid #ddd;
+  padding: 1.2rem 1rem 1.2rem 3rem;
+  font-size: 1.1rem;
+  width: auto;           /* antes era 100% */
+  border-radius: 1.5rem;
+  color: #333;
+  box-shadow: 0 0.4rem #dfd9d9, inset 0 0 0 transparent;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 2;
+}
+
+/* 3) Estilos para que el botón quede junto al input */
+.input-wrapper button[type="submit"] {
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333; /* o blanco, según prefieras */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #4a90e2; /* Changed to blue */
+  box-shadow: 0 0.6rem #dfd9d9, 0 0 15px rgb(13, 52, 126); /* Blue glow */
+  transform: translateY(-3px) scale(1.01);
+}
+
+.input-wrapper input::placeholder {
+  color: #a0c0e8; /* Lighter blue for placeholder */
+  transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus::placeholder {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+/* Emoji styles */
+.input-wrapper::after {
+  content: "😎";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+/* Emoji animations */
+@keyframes dance {
+  0%,
+  100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-50%) rotate(-20deg) scale(1.1);
+  }
+  75% {
+    transform: translateY(-50%) rotate(20deg) scale(1.1);
+  }
+}
+
+.input-wrapper:hover::after {
+  animation: dance 0.5s ease infinite;
+}
+
+.input-wrapper:focus-within::after {
+  content: "😌";
+  animation: dance 1s ease infinite;
+}
+
+.input-wrapper input::placeholder {
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus::placeholder {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+/* Psychedelic background effect */
+.input-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    #4a90e2,
+    #6aa9e9,
+    #8bc1f0,
+    #add9f7,
+    #d0f0ff,
+    #add9f7,
+    #8bc1f0,
+    #6aa9e9,
+    #4a90e2
+  );
+  animation: rotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.input-wrapper:hover::before,
+.input-wrapper:focus-within::before {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shockwave effect on focus */
+@keyframes shockwave {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 127, 127, 0.4);
+  }
+  70% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 20px rgba(255, 127, 127, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 127, 127, 0);
+  }
+}
+
+.input-wrapper:focus-within {
+  animation: shockwave 0.5s ease-out;
+}
+
+/* Floating label effect */
+.input-wrapper {
+  --label-size: 0.8rem;
+  --label-transform: translateY(-170%) scale(0.8);
+}
+
+.input-wrapper input:placeholder-shown + label {
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+.input-wrapper label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: var(--label-transform);
+  font-size: var(--label-size);
+  color: #ff7f7f;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.input-wrapper input:not(:placeholder-shown) + label,
+.input-wrapper input:focus + label {
+  transform: var(--label-transform);
+  font-size: var(--label-size);
+}
+
+
+
+/**/
+
+/* ==== Responsive para móviles ==== */
+@media (max-width: 600px) {
+  /* 1) Centrar y ensanchar el wrapper del input */
+  .chat-input-form {
+    padding: 0.5rem;
+  }
+  .input-wrapper {
+    max-width: 100%;
+    padding: 2px;
+    margin: 0 0.5rem;
+  }
+
+  /* 2) Input ocupa todo el ancho restante */
+  .input-wrapper input {
+    padding: 1rem 1rem 1rem 2.5rem;
+    font-size: 1rem;
+  }
+
+  /* 3) Botón “send” más grande y con margen */
+  .input-wrapper button[type="submit"],
+  form.chat-input-form > button {
+    margin-left: 0.5rem;
+    font-size: 1.4rem;
+  }
+
+  /* 4) Ocultar la animación de fondo si quieres menos distracción */
+  .input-wrapper::before {
+    display: none;
+  }
+
+  /* 5) Ajustar el emoji para que no tape texto largo */
+  .input-wrapper::after {
+    left: 0.75rem;
+    font-size: 1rem;
+  }
 }

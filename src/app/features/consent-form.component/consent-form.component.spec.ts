@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChatInputComponent } from './chat-input.component';
+import { ConsentFormComponent } from './consent-form.component';
 
-describe('ChatInput', () => {
-  let component: ChatInputComponent;
-  let fixture: ComponentFixture<ChatInputComponent>;
+describe('ConsentFormComponent', () => {
+  let component: ConsentFormComponent;
+  let fixture: ComponentFixture<ConsentFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChatInputComponent]
+      imports: [ConsentFormComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ChatInputComponent);
+    fixture = TestBed.createComponent(ConsentFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,15 +1,32 @@
 <div class="chat-window">
-  <div *ngFor="let m of messages" class="msg" [class.user]="m.fromUser">
-    {{ m.text }}
+  <!-- Prompt estático antes de mensajes -->
+  <div *ngIf="messages.length === 0" class="prompt">
+    ¿Cómo te sientes hoy?
   </div>
 
-  <app-chat-input (send)="onUserMessage($event)"></app-chat-input>
+  <!-- Burbujas de chat -->
+   <div *ngFor="let m of messages"
+         class="chat-message"
+         [ngClass]="m.fromUser ? 'user' : 'bot'">
+     {{ m.text }}
+   </div>
 
+  <!-- Botón para terminar -->
   <button
+    class="button-finish"
     mat-raised-button
     color="accent"
     (click)="finishConversation()"
-    [disabled]="history.length === 0">
+    [disabled]="history.length === 0"
+  >
     Terminar conversación
   </button>
+
+  <!-- Única zona de input fijo abajo -->
+  <div class="input-wrapper">
+    <app-chat-input
+      (send)="onUserMessage($event)"
+      (finish)="finishConversation()">
+    </app-chat-input>
+  </div>
 </div>

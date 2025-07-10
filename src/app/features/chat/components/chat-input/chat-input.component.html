@@ -1,26 +1,21 @@
-<form class="chat-input-form" (ngSubmit)="onSend()">
-  <mat-form-field class="chat-input-field" appearance="outline">
-    <input
-      matInput
-      placeholder="Escribe tu mensaje"
-      [(ngModel)]="text"
-      name="text"/>
+<form class="chat-input-form" (ngSubmit)="onSend()" autocomplete="off">
 
-    <button
-      mat-icon-button
-      matSuffix
-      type="submit"
-      [disabled]="!text.trim()">
-      <mat-icon>send</mat-icon>
-    </button>
-  </mat-form-field>
 
+  <div class="input-wrapper">
+    <input  matInput
+            placeholder="Escribe tu mensaje"
+            [(ngModel)]="text"
+            name="text"/>
+
+
+  </div>
   <button
-    mat-mini-fab
-    color="warn"
-    class="finish-btn"
-    (click)="onFinish()"
-    title="Finalizar conversación">
-    <mat-icon>flag</mat-icon>
+    mat-icon-button
+    type="submit"
+    [disabled]="!text.trim()"
+    [style.color]=" text.trim() ? '#093671' : '#bbb' "
+  >
+    <mat-icon>send</mat-icon>
   </button>
+
 </form>

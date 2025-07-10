@@ -43,5 +43,7 @@ export class LoginComponent {
           // aquí podrías mostrar un mensaje de error al usuario
         }
       });
+    this.router.navigate(['/consent']);
   }
+
 }

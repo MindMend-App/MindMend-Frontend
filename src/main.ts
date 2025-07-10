@@ -1,7 +1,7 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication }             from '@angular/platform-browser';
-import { provideRouter }                    from '@angular/router';
-import { provideAnimations }                from '@angular/platform-browser/animations';
+import {provideRouter, RouterModule} from '@angular/router';
+import {BrowserAnimationsModule, provideAnimations} from '@angular/platform-browser/animations';
 import { AppComponent }                     from './app/app.component';
 import { routes }                           from './app/app.routes';
 import { SharedModule }                     from './app/shared/shared.module';
@@ -17,8 +17,8 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideAnimations(),
     provideRouter(routes),
+    provideAnimations(),
     importProvidersFrom(
       SharedModule,
       HttpClientModule

@@ -1,8 +1,45 @@
-<mat-toolbar color="primary">
-  <span>MindMend</span>
-  <span class="spacer"></span>
-  <button mat-button routerLink="/chat">Chat</button>
-  <button mat-button routerLink="/analysis">Análisis</button>
-</mat-toolbar>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 
-<router-outlet></router-outlet>
+<!-- LAYOUT PRINCIPAL (sidebar + toolbar + chat/analysis) -->
+<ng-container *ngIf="showLayout">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="over" closed class="sidebar">
+      <!-- tu sidebar aquí -->
+      <div class="sidebar-header">
+        <div class="avatar">
+          <img src="/assets/logo1.png" alt="MindMend logo" />
+        </div>
+      </div>
+      <button mat-button class="menu-item">
+        <mat-icon>edit</mat-icon>
+        <span>Nuevo Chat</span>
+      </button>
+      <div class="spacer"></div>
+      <button mat-button class="menu-item logout">
+        <mat-icon>logout</mat-icon>
+        <span routerLink="/login">Cerrar Sesión</span>
+      </button>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="topbar">
+        <button mat-icon-button (click)="toggleSidebar()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="title">MindMend</span>
+        <span class="spacer"></span>
+        <button mat-icon-button>
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
+
+<ng-container *ngIf="!showLayout">
+  <router-outlet></router-outlet>
+</ng-container>

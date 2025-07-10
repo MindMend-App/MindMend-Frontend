@@ -1,58 +1,14 @@
-/* Barra superior */
-.toolbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  background: white;
-  color: #333;
-  box-shadow: none;
-  display: flex;
-  align-items: center;
-}
-
-/* Logo centrado tras el menú */
-.logo {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-left: 8px;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-/* Contenedor principal debajo de la toolbar */
-.container {
-  height: calc(100vh - 64px);
-}
-
-/* Estilos del sidenav */
-.sidenav {
-  width: 250px;
-  background: #f5f5f5;
-}
-
-/* Título/pregunta centrada */
 .prompt {
   text-align: center;
-  margin: 1rem 0;
+  margin: 2rem 0;
+  font-size: 1.25rem;
+  color: #333;
 }
-
-/* Wrapper para el input abajo centrado */
-.input-wrapper {
-  position: sticky;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 600px;
-  padding: 0.5rem;
-}
-
 
 .chat-window {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .message {
@@ -70,4 +26,107 @@
 .bot {
   background: #f1f1f1;
   margin-right: auto;
+}
+
+.input-wrapper {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 0.5rem 1rem;
+  /* si quieres centrar ancho: */
+  display: flex;
+  justify-content: center;
+}
+
+
+/*burbujas*/
+
+/* 1. Contenedor principal */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 2. Zona de mensajes (crea un gap entre ellos) */
+.chat-window .chat-message {
+  max-width: 60%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 1rem;
+  margin: 0.25rem 0;
+  word-wrap: break-word;
+  display: inline-block;
+}
+
+/* 3. Estilos para mensajes del usuario */
+.chat-window .chat-message.user {
+  background-color: #5288ce;
+  color: white;
+  align-self: flex-end;
+}
+
+/* 4. Estilos para mensajes del bot */
+.chat-window .chat-message.bot {
+  background-color: #6b7280;
+  color: white;
+  align-self: flex-start;
+}
+
+.button-finish{
+margin: 0.8rem 0.5rem 0.5rem 0.5rem;
+
+}
+
+
+/* ==== Responsive para móviles ==== */
+@media (max-width: 600px) {
+  /* 1) Que el contenedor ocupe toda la pantalla */
+  .chat-window {
+    height: 100vh;
+    padding-bottom: 3.5rem; /* deja espacio para el input fijo */
+  }
+
+  /* 2) Prompt centrado y con menos margen */
+  .prompt {
+    margin: 1.5rem 0;
+    font-size: 1rem;
+  }
+
+  /* 3) Mensajes más anchos y con fuente un poco mayor */
+  .chat-window .chat-message {
+    max-width: 80%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 1.2rem;
+  }
+
+  /* 4) Ajustar los colores (si quieres) o dejar igual */
+  .chat-window .chat-message.user {
+    /* opcional: background-color: #4a7ac7; */
+  }
+  .chat-window .chat-message.bot {
+    /* opcional: background-color: #4b5563; */
+  }
+
+  /* 5) Botón “Terminar” más centrado y ancho completo */
+  .button-finish {
+    width: 90%;
+    max-width: 300px;
+    margin: 0.5rem auto;
+    font-size: 0.9rem;
+  }
+
+  /* 6) Input fijo abajo ocupa todo el ancho */
+  .input-wrapper {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    background: white;
+  }
+  .input-wrapper app-chat-input {
+    width: 100%;
+  }
 }

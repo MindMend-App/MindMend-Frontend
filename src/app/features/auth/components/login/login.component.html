@@ -1,5 +1,69 @@
-<form (ngSubmit)="submit()">
-  <input [(ngModel)]="username" name="username" placeholder="Usuario" required>
-  <input [(ngModel)]="password" name="password" type="password" placeholder="Contraseña" required>
-  <button type="submit">Entrar</button>
-</form>
+<div class="login-page">
+  <!-- Panel izquierdo -->
+  <div class="login-welcome">
+    <h1>¡Bienvenido!</h1>
+    <p>
+      Es un placer tenerte con nosotros,<br/>
+      te aseguro que disfrutarás de nuestra aplicación
+    </p>
+  </div>
+
+  <!-- Panel derecho -->
+  <div class="login-form-container">
+    <div class="form-card">
+      <h2>Iniciar Sesión</h2>
+      <p>Bienvenido a MindMend</p>
+      <form #loginForm="ngForm" (ngSubmit)="submit()" class="login-form" autocomplete="off" novalidate>
+
+        <!-- Usuario -->
+        <div class="form__group field">
+          <input
+            [(ngModel)]="username"
+            name="username"
+            id="username"
+            class="form__field"
+            placeholder="Correo"
+            required
+            type="email"
+            #usernameNg="ngModel"
+            pattern=".+@upc.edu.pe$"
+          />
+          <label for="username" class="form__label">Correo</label>
+          <div class="error" *ngIf="usernameNg.invalid && usernameNg.touched">
+            <span style="color: #c62424" *ngIf="usernameNg.errors?.['required']">El correo es obligatorio.</span>
+            <span style="color: #c62424" *ngIf="usernameNg.errors?.['pattern']">Debes usar tu correo &#64;upc.edu.pe</span>
+          </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="form__group field">
+          <input
+            [(ngModel)]="password"
+            name="password"
+            id="password"
+            class="form__field"
+            placeholder="Contraseña"
+            required
+            type="password"
+            #passwordNg="ngModel"
+            minlength="6"
+          />
+          <label for="password" class="form__label">Contraseña</label>
+          <div class="error" *ngIf="passwordNg.invalid && passwordNg.touched">
+            <span style="color: #c62424" *ngIf="passwordNg.errors?.['required']">La contraseña es obligatoria.</span>
+            <span style="color: #c62424" *ngIf="passwordNg.errors?.['minlength']">Mínimo {{ passwordNg.errors?.['minlength']?.requiredLength }} caracteres.</span>
+          </div>
+        </div>
+
+        <!-- Resto del form -->
+        <div class="remember-me">
+          <input class="check" type="checkbox" id="recuerdame" />
+          <label for="recuerdame">Recuérdame</label>
+        </div>
+        <button type="submit" class="login-btn" [disabled]="loginForm.invalid">
+          Iniciar Sesión
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

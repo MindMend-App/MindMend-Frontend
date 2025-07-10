@@ -1,0 +1,15 @@
+<div class="summary-container">
+  <ng-container *ngIf="isPsychologist; else thankYou">
+    <h2>Resumen Emocional</h2>
+    <!-- Aquí tu gráfico / estadísticas -->
+    <p>Aquí van las estadísticas de la conversación…</p>
+    <button routerLink="/analysis" mat-button>Ver Dashboard</button>
+  </ng-container>
+
+  <ng-template #thankYou>
+    <h2>¡Gracias por compartir!</h2>
+    <p>Esperamos haberte ayudado un poco hoy.</p>
+    <button routerLink="/chat" mat-button>Empezar de nuevo</button>
+    <button routerLink="/login" mat-button color="warn">Cerrar sesión</button>
+  </ng-template>
+</div>

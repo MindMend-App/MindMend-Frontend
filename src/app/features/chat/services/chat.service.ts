@@ -13,9 +13,9 @@ export class ChatService {
 
   constructor(private http: HttpClient) {}
 
-  chat(message: string): Observable<string> {
+  chat(message: string, history: string[]): Observable<string> {
     return this.http
-      .post<ChatResp>(`${this.base}/chat`, { message })
+      .post<ChatResp>(`${this.base}/chat`, { message, history })
       .pipe(map(r => r.reply));
   }
 

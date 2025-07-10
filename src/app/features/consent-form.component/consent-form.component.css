@@ -1,0 +1,155 @@
+/* Pantalla completa con fondo azul oscuro */
+.consent-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0d347e;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Tarjeta blanca centrada */
+.consent-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  max-width: 800px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  color: #222;
+}
+
+/* Título principal */
+.consent-title {
+  text-align: center;
+  color: #1EA6FB;
+  font-size: 25px;
+  margin-bottom: 1rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  line-height: 1.2;
+}
+
+/* Párrafo de descripción */
+.consent-text {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 auto 2rem;
+  max-width: 700px;
+  color: #333;
+}
+
+/* Subtítulo de lista */
+.consent-subtitle {
+  color: #1EA6FB;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Lista de puntos */
+.consent-list {
+  list-style: decimal inside;
+  margin-left: 1rem;
+  margin-bottom: 4.5rem;
+  color: #222;
+}
+.consent-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Botones al pie */
+.consent-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Botón “Cancelar” en coral suave */
+.btn-cancel {
+  background-color: #ff7f7f;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-cancel:hover {
+  background-color: #ff5f5f;
+}
+
+/* Botón “Aceptar” en azul claro */
+.btn-accept {
+  background-color: #71c5ff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-accept:hover {
+  background-color: #4fb0ff;
+}
+
+
+
+/* ==== Responsive para móviles ==== */
+@media (max-width: 600px) {
+  /* 1) Asegura que el contenedor ocupe todo y no haya scroll extra */
+  .consent-page {
+    padding: 1rem;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* 2) Ajusta la tarjeta: menos padding, centrada y ancho completo */
+  .consent-card {
+    padding: 1.5rem 1rem;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  /* 3) Título más pequeño y márgenes reduc-
+     idos para que no se corte el texto */
+  .consent-title {
+    font-size: 1.5rem;
+    margin: 0 1rem 1rem;
+    line-height: 1.3;
+  }
+
+  /* 4) Párrafo descriptivo: ancho completo y fuente un pelín más pequeña */
+  .consent-text {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  /* 5) Subtítulo de lista: fuente reducida */
+  .consent-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* 6) Lista de puntos: fuente más pequeña y espacio inferior moderado */
+  .consent-list {
+    font-size: 0. ninerem;
+    margin-bottom: 2rem;
+  }
+
+  /* 7) Botones en columna y ancho completo */
+  .consent-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .consent-actions .btn-cancel,
+  .consent-actions .btn-accept {
+    width: 100%;
+    padding: 0.65rem;
+    font-size: 0. ninerem;
+  }
+}
